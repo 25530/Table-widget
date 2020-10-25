@@ -26,46 +26,54 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Testpage(title: 'mijn test page'),
     );
   }
 }
 
-class _TableExample extends State<MyApp> {
+class Testpage extends StatefulWidget {
+  Testpage({Key key, this.title}) : super(key: key);
+
+
+  final String title;
+
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.grey,
-            title: Text('Flutter Table Widget'),
-          ),
-          body: Center(
-              child: Column(children: <Widget>[
-                Container(
-                  margin: EdgeInsets.all(20),
-                  child: Table(
-                    defaultColumnWidth: FixedColumnWidth(150.0),
-                    border: TableBorder.all(
-                        color: Colors.black,
-                        style: BorderStyle.solid,
-                        width: 2),
-                    children: [
-                      TableRow( children: [
-                        Column(children:[Text('Hey 1', style: TextStyle(fontSize: 15.0))]),
-                        Column(children:[Text('Hey 2', style: TextStyle(fontSize: 20.0))]),
-                        Column(children:[Text('hey 3', style: TextStyle(fontSize: 25.0))]),
-                      ]),
-                      TableRow( children: [
-                        Column(children:[Text('Hallo')]),
-                        Column(children:[Text('Simon')]),
-                        Column(children:[Text(':)')]),
-                      ]),
-                    ],
-                  ),
-                ),
-              ])
-          )),
-    );
+  _TestpageState createState() => _TestpageState();
+}
+
+class _TestpageState extends State<Testpage> 
+{
+  @override
+  Widget build(BuildContext context) 
+  {
+    return Scaffold
+      (
+        appBar: AppBar(
+          title: Text(widget.title),
+        ),
+        body: ListView(
+          padding: const EdgeInsets.all(12),
+          children: <StatelessWidget>[
+            Container
+            (
+              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50.0)),
+              color: Colors.red[100],
+              height: 50,
+              child: const Center(child: Text('Iets')),
+            ),
+            Container(
+              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50.0)),
+              color: Colors.blue[150],
+              height: 50,
+              child: const Center(child: Text('Tekst')),
+            ),
+            Container(
+              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(50.0)),
+              color: Colors.yellow[200],
+              height: 50,
+              child: const Center(child: Text('Dit is geel')),
+            ),
+          ],
+        ));
   }
 }
